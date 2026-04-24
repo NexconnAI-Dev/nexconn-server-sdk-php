@@ -1,5 +1,5 @@
 {
-    "name": "public-server/nexconn-server-sdk-php",
+    "name": "nexconnai-dev/nexconn-server-sdk-php",
     "version": "0.1.0",
     "description": "OpenAPI specification aligned with the current Nexconn public documentation, PDF source documents, and generated SDK requirements.",
     "keywords": [
@@ -11,7 +11,7 @@
         "rest",
         "api"
     ],
-    "homepage": "https://gitlab2.rongcloud.net/public-server/nexconn-server-sdk-php",
+    "homepage": "https://github.com/NexconnAI-Dev/nexconn-server-sdk-php",
     "license": "MIT",
     "authors": [
         {
