@@ -19,10 +19,14 @@ Install from the Git repository:
 
 ```bash
 composer config repositories.nexconn-sdk-php vcs https://github.com/NexconnAI-Dev/nexconn-server-sdk-php.git
-composer require nexconnai-dev/nexconn-server-sdk-php:dev-dev
+composer require nexconnai-dev/nexconn-server-sdk-php:^v0.1.0
 ```
 
-If you publish tagged releases later, prefer a stable version constraint such as `^1.0`.
+Or install a specific version:
+
+```bash
+composer require nexconnai-dev/nexconn-server-sdk-php:v0.1.0
+```
 
 ## Quick Start
 
