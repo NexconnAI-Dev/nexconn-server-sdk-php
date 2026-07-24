@@ -1,8 +1,8 @@
 {
   "sourceRepo": "nc-server-sdk-generator",
   "sourceBranch": "HEAD",
-  "sourceCommit": "154f3cbc2aa105941cd89fff4ea09294171423ae",
+  "sourceCommit": "6b7cedcfe2389d5b8a788ffc5a18cf4b18234be9",
   "sourceSpecPath": "spec/openapi.yaml",
   "publishedBranch": "dev",
-  "publishedAt": "2026-05-08T06:57:49Z"
+  "publishedAt": "2026-07-14T08:00:44Z"
 }

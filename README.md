@@ -1,7 +1,7 @@
 # nexconn-sdk-php
 
 Nexconn Server API
-- API version: 0.1.0
+- API version: 0.1.1
   - Generator version: 7.14.0
 
 OpenAPI specification aligned with the current Nexconn public documentation, PDF source documents, and generated SDK requirements.
@@ -19,13 +19,13 @@ Install from the Git repository:
 
 ```bash
 composer config repositories.nexconn-sdk-php vcs https://github.com/NexconnAI-Dev/nexconn-server-sdk-php.git
-composer require nexconnai-dev/nexconn-server-sdk-php:^v0.1.0
+composer require nexconnai-dev/nexconn-server-sdk-php:^v0.1.1
 ```
 
 Or install a specific version:
 
 ```bash
-composer require nexconnai-dev/nexconn-server-sdk-php:v0.1.0
+composer require nexconnai-dev/nexconn-server-sdk-php:v0.1.1
 ```
 
 ## Quick Start
@@ -117,7 +117,7 @@ All exception subclasses provide the following methods:
 
 - Automatic Nexconn request signing when `setNexconnCredentials()` is configured
 - Built-in multi-domain failover support via `setPrimaryBackupDomains()`
-- Default `User-Agent`: `nexconn-sdk-php/0.1.0`
+- Default `User-Agent`: `nexconn-sdk-php/0.1.1`
 - Automatic `X-Request-ID` generation
 
 ## Endpoints
@@ -218,7 +218,9 @@ Class | Method | HTTP request | Description
 *MessageManagementApi* | [**listCommunityChannelMessageMetadata**](docs/Api/MessageManagementApi.md#listCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/list | List community-channel message metadata
 *MessageManagementApi* | [**sendCommunityChannelMessage**](docs/Api/MessageManagementApi.md#sendCommunityChannelMessage) | **POST** /v4/community-channel/message/send | Send a community channel message
 *MessageManagementApi* | [**sendDirectChannelMessage**](docs/Api/MessageManagementApi.md#sendDirectChannelMessage) | **POST** /v4/direct-channel/message/send | Send a direct message
+*MessageManagementApi* | [**sendDirectChannelStreamMessage**](docs/Api/MessageManagementApi.md#sendDirectChannelStreamMessage) | **POST** /v4/direct-channel/message/stream/send | Send a direct channel stream message
 *MessageManagementApi* | [**sendGroupChannelMessage**](docs/Api/MessageManagementApi.md#sendGroupChannelMessage) | **POST** /v4/group-channel/message/send | Send a group message
+*MessageManagementApi* | [**sendGroupChannelStreamMessage**](docs/Api/MessageManagementApi.md#sendGroupChannelStreamMessage) | **POST** /v4/group-channel/message/stream/send | Send a group channel stream message
 *MessageManagementApi* | [**sendOpenChannelMessage**](docs/Api/MessageManagementApi.md#sendOpenChannelMessage) | **POST** /v4/open-channel/message/send | Send an open channel message
 *MessageManagementApi* | [**setChannelTypeMessageMetadata**](docs/Api/MessageManagementApi.md#setChannelTypeMessageMetadata) | **POST** /v4/channel-type/message/metadata/set | Set message metadata
 *MessageManagementApi* | [**setCommunityChannelMessageMetadata**](docs/Api/MessageManagementApi.md#setCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/set | Set community-channel message metadata
@@ -395,6 +397,7 @@ Class | Method | HTTP request | Description
 - [CommunityUserSubchannelListResponseResult](docs/Model/CommunityUserSubchannelListResponseResult.md)
 - [DirectChannelMessageSendRequest](docs/Model/DirectChannelMessageSendRequest.md)
 - [DirectChannelMessageUpdateRequest](docs/Model/DirectChannelMessageUpdateRequest.md)
+- [DirectChannelStreamMessageSendRequest](docs/Model/DirectChannelStreamMessageSendRequest.md)
 - [FriendAddRequest](docs/Model/FriendAddRequest.md)
 - [FriendCleanRequest](docs/Model/FriendCleanRequest.md)
 - [FriendDeleteRequest](docs/Model/FriendDeleteRequest.md)
@@ -460,6 +463,7 @@ Class | Method | HTTP request | Description
 - [GroupChannelProfileListResponseResult](docs/Model/GroupChannelProfileListResponseResult.md)
 - [GroupChannelProfileUpdateRequest](docs/Model/GroupChannelProfileUpdateRequest.md)
 - [GroupChannelQuitRequest](docs/Model/GroupChannelQuitRequest.md)
+- [GroupChannelStreamMessageSendRequest](docs/Model/GroupChannelStreamMessageSendRequest.md)
 - [GroupChannelSummaryItem](docs/Model/GroupChannelSummaryItem.md)
 - [GroupChannelTransferOwnerRequest](docs/Model/GroupChannelTransferOwnerRequest.md)
 - [GroupChannelUserMuteListAddRequest](docs/Model/GroupChannelUserMuteListAddRequest.md)
@@ -537,6 +541,9 @@ Class | Method | HTTP request | Description
 - [ProfanityWordListedItem](docs/Model/ProfanityWordListedItem.md)
 - [SingleMessageIdResponse](docs/Model/SingleMessageIdResponse.md)
 - [SingleMessageIdResponseResult](docs/Model/SingleMessageIdResponseResult.md)
+- [StreamMessageContent](docs/Model/StreamMessageContent.md)
+- [StreamMessageSendResponse](docs/Model/StreamMessageSendResponse.md)
+- [StreamMessageSendResponseResult](docs/Model/StreamMessageSendResponseResult.md)
 - [SystemChannelBroadcastAllRequest](docs/Model/SystemChannelBroadcastAllRequest.md)
 - [SystemChannelBroadcastDeleteRequest](docs/Model/SystemChannelBroadcastDeleteRequest.md)
 - [SystemChannelBroadcastOnlineRequest](docs/Model/SystemChannelBroadcastOnlineRequest.md)
@@ -610,7 +617,7 @@ Authentication schemes defined for the API:
 ## Package Info
 
 - Repository: `https://github.com/NexconnAI-Dev/nexconn-server-sdk-php`
-- Package version: `0.1.0`
+- Package version: `0.1.1`
 
 ## License
 
