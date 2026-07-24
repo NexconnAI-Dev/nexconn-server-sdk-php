@@ -120,6 +120,7 @@ docs/Model/CommunityUserSubchannelListResponse.md
 docs/Model/CommunityUserSubchannelListResponseResult.md
 docs/Model/DirectChannelMessageSendRequest.md
 docs/Model/DirectChannelMessageUpdateRequest.md
+docs/Model/DirectChannelStreamMessageSendRequest.md
 docs/Model/FriendAddRequest.md
 docs/Model/FriendCleanRequest.md
 docs/Model/FriendDeleteRequest.md
@@ -185,6 +186,7 @@ docs/Model/GroupChannelProfileListResponse.md
 docs/Model/GroupChannelProfileListResponseResult.md
 docs/Model/GroupChannelProfileUpdateRequest.md
 docs/Model/GroupChannelQuitRequest.md
+docs/Model/GroupChannelStreamMessageSendRequest.md
 docs/Model/GroupChannelSummaryItem.md
 docs/Model/GroupChannelTransferOwnerRequest.md
 docs/Model/GroupChannelUserMuteListAddRequest.md
@@ -262,6 +264,9 @@ docs/Model/ProfanityWordListResponseResult.md
 docs/Model/ProfanityWordListedItem.md
 docs/Model/SingleMessageIdResponse.md
 docs/Model/SingleMessageIdResponseResult.md
+docs/Model/StreamMessageContent.md
+docs/Model/StreamMessageSendResponse.md
+docs/Model/StreamMessageSendResponseResult.md
 docs/Model/SystemChannelBroadcastAllRequest.md
 docs/Model/SystemChannelBroadcastDeleteRequest.md
 docs/Model/SystemChannelBroadcastOnlineRequest.md
@@ -440,6 +445,7 @@ lib/Model/CommunityUserSubchannelListResponse.php
 lib/Model/CommunityUserSubchannelListResponseResult.php
 lib/Model/DirectChannelMessageSendRequest.php
 lib/Model/DirectChannelMessageUpdateRequest.php
+lib/Model/DirectChannelStreamMessageSendRequest.php
 lib/Model/FriendAddRequest.php
 lib/Model/FriendCleanRequest.php
 lib/Model/FriendDeleteRequest.php
@@ -505,6 +511,7 @@ lib/Model/GroupChannelProfileListResponse.php
 lib/Model/GroupChannelProfileListResponseResult.php
 lib/Model/GroupChannelProfileUpdateRequest.php
 lib/Model/GroupChannelQuitRequest.php
+lib/Model/GroupChannelStreamMessageSendRequest.php
 lib/Model/GroupChannelSummaryItem.php
 lib/Model/GroupChannelTransferOwnerRequest.php
 lib/Model/GroupChannelUserMuteListAddRequest.php
@@ -583,6 +590,9 @@ lib/Model/ProfanityWordListResponseResult.php
 lib/Model/ProfanityWordListedItem.php
 lib/Model/SingleMessageIdResponse.php
 lib/Model/SingleMessageIdResponseResult.php
+lib/Model/StreamMessageContent.php
+lib/Model/StreamMessageSendResponse.php
+lib/Model/StreamMessageSendResponseResult.php
 lib/Model/SystemChannelBroadcastAllRequest.php
 lib/Model/SystemChannelBroadcastDeleteRequest.php
 lib/Model/SystemChannelBroadcastOnlineRequest.php
@@ -759,6 +769,7 @@ test/Model/CommunityUserSubchannelListResponseResultTest.php
 test/Model/CommunityUserSubchannelListResponseTest.php
 test/Model/DirectChannelMessageSendRequestTest.php
 test/Model/DirectChannelMessageUpdateRequestTest.php
+test/Model/DirectChannelStreamMessageSendRequestTest.php
 test/Model/FriendAddRequestTest.php
 test/Model/FriendCleanRequestTest.php
 test/Model/FriendDeleteRequestTest.php
@@ -824,6 +835,7 @@ test/Model/GroupChannelProfileListResponseResultTest.php
 test/Model/GroupChannelProfileListResponseTest.php
 test/Model/GroupChannelProfileUpdateRequestTest.php
 test/Model/GroupChannelQuitRequestTest.php
+test/Model/GroupChannelStreamMessageSendRequestTest.php
 test/Model/GroupChannelSummaryItemTest.php
 test/Model/GroupChannelTransferOwnerRequestTest.php
 test/Model/GroupChannelUserMuteListAddRequestTest.php
@@ -901,6 +913,9 @@ test/Model/ProfanityWordListResponseTest.php
 test/Model/ProfanityWordListedItemTest.php
 test/Model/SingleMessageIdResponseResultTest.php
 test/Model/SingleMessageIdResponseTest.php
+test/Model/StreamMessageContentTest.php
+test/Model/StreamMessageSendResponseResultTest.php
+test/Model/StreamMessageSendResponseTest.php
 test/Model/SystemChannelBroadcastAllRequestTest.php
 test/Model/SystemChannelBroadcastDeleteRequestTest.php
 test/Model/SystemChannelBroadcastOnlineRequestTest.php

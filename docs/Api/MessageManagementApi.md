@@ -13,7 +13,9 @@ All requests use the primary/backup domains configured by the caller.
 | [**listCommunityChannelMessageMetadata()**](MessageManagementApi.md#listCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/list | List community-channel message metadata |
 | [**sendCommunityChannelMessage()**](MessageManagementApi.md#sendCommunityChannelMessage) | **POST** /v4/community-channel/message/send | Send a community channel message |
 | [**sendDirectChannelMessage()**](MessageManagementApi.md#sendDirectChannelMessage) | **POST** /v4/direct-channel/message/send | Send a direct message |
+| [**sendDirectChannelStreamMessage()**](MessageManagementApi.md#sendDirectChannelStreamMessage) | **POST** /v4/direct-channel/message/stream/send | Send a direct channel stream message |
 | [**sendGroupChannelMessage()**](MessageManagementApi.md#sendGroupChannelMessage) | **POST** /v4/group-channel/message/send | Send a group message |
+| [**sendGroupChannelStreamMessage()**](MessageManagementApi.md#sendGroupChannelStreamMessage) | **POST** /v4/group-channel/message/stream/send | Send a group channel stream message |
 | [**sendOpenChannelMessage()**](MessageManagementApi.md#sendOpenChannelMessage) | **POST** /v4/open-channel/message/send | Send an open channel message |
 | [**setChannelTypeMessageMetadata()**](MessageManagementApi.md#setChannelTypeMessageMetadata) | **POST** /v4/channel-type/message/metadata/set | Set message metadata |
 | [**setCommunityChannelMessageMetadata()**](MessageManagementApi.md#setCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/set | Set community-channel message metadata |
@@ -594,6 +596,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `sendDirectChannelStreamMessage()`
+
+```php
+sendDirectChannelStreamMessage($direct_channel_stream_message_send_request): \NexConnServerSdkPhp\Model\StreamMessageSendResponse
+```
+
+Send a direct channel stream message
+
+Rate limit: 100/sec.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$direct_channel_stream_message_send_request = new \NexConnServerSdkPhp\Model\DirectChannelStreamMessageSendRequest(); // \NexConnServerSdkPhp\Model\DirectChannelStreamMessageSendRequest
+
+try {
+    $result = $apiInstance->sendDirectChannelStreamMessage($direct_channel_stream_message_send_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->sendDirectChannelStreamMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **direct_channel_stream_message_send_request** | [**\NexConnServerSdkPhp\Model\DirectChannelStreamMessageSendRequest**](../Model/DirectChannelStreamMessageSendRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\StreamMessageSendResponse**](../Model/StreamMessageSendResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `sendGroupChannelMessage()`
 
 ```php
@@ -644,6 +710,70 @@ try {
 ### Return type
 
 [**\NexConnServerSdkPhp\Model\ChannelMessageSendResponse**](../Model/ChannelMessageSendResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendGroupChannelStreamMessage()`
+
+```php
+sendGroupChannelStreamMessage($group_channel_stream_message_send_request): \NexConnServerSdkPhp\Model\StreamMessageSendResponse
+```
+
+Send a group channel stream message
+
+Rate limit: 100/sec.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$group_channel_stream_message_send_request = new \NexConnServerSdkPhp\Model\GroupChannelStreamMessageSendRequest(); // \NexConnServerSdkPhp\Model\GroupChannelStreamMessageSendRequest
+
+try {
+    $result = $apiInstance->sendGroupChannelStreamMessage($group_channel_stream_message_send_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->sendGroupChannelStreamMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_channel_stream_message_send_request** | [**\NexConnServerSdkPhp\Model\GroupChannelStreamMessageSendRequest**](../Model/GroupChannelStreamMessageSendRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\StreamMessageSendResponse**](../Model/StreamMessageSendResponse.md)
 
 ### Authorization
 
