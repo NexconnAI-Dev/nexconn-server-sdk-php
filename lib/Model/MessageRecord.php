@@ -63,10 +63,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => 'string',
         'sent_at' => 'int',
         'message_type' => 'string',
-        'channel_type' => 'int',
         'content' => 'string',
         'has_metadata' => 'bool',
-        'metadata' => '\NexConnServerSdkPhp\Model\MessageMetadataListItem[]'
+        'metadata' => '\NexConnServerSdkPhp\Model\MessageMetadataListItem[]',
+        'quote' => 'string'
     ];
 
     /**
@@ -83,10 +83,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => null,
         'sent_at' => 'int64',
         'message_type' => null,
-        'channel_type' => 'int32',
         'content' => null,
         'has_metadata' => null,
-        'metadata' => null
+        'metadata' => null,
+        'quote' => null
     ];
 
     /**
@@ -101,10 +101,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => false,
         'sent_at' => false,
         'message_type' => false,
-        'channel_type' => false,
         'content' => false,
         'has_metadata' => false,
-        'metadata' => false
+        'metadata' => false,
+        'quote' => false
     ];
 
     /**
@@ -199,10 +199,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => 'messageId',
         'sent_at' => 'sentAt',
         'message_type' => 'messageType',
-        'channel_type' => 'channelType',
         'content' => 'content',
         'has_metadata' => 'hasMetadata',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'quote' => 'quote'
     ];
 
     /**
@@ -217,10 +217,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => 'setMessageId',
         'sent_at' => 'setSentAt',
         'message_type' => 'setMessageType',
-        'channel_type' => 'setChannelType',
         'content' => 'setContent',
         'has_metadata' => 'setHasMetadata',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'quote' => 'setQuote'
     ];
 
     /**
@@ -235,10 +235,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         'message_id' => 'getMessageId',
         'sent_at' => 'getSentAt',
         'message_type' => 'getMessageType',
-        'channel_type' => 'getChannelType',
         'content' => 'getContent',
         'has_metadata' => 'getHasMetadata',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'quote' => 'getQuote'
     ];
 
     /**
@@ -304,10 +304,10 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('message_id', $data ?? [], null);
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('message_type', $data ?? [], null);
-        $this->setIfExists('channel_type', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('has_metadata', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('quote', $data ?? [], null);
     }
 
     /**
@@ -515,33 +515,6 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets channel_type
-     *
-     * @return int|null
-     */
-    public function getChannelType()
-    {
-        return $this->container['channel_type'];
-    }
-
-    /**
-     * Sets channel_type
-     *
-     * @param int|null $channel_type Channel type of the stored message.
-     *
-     * @return self
-     */
-    public function setChannelType($channel_type)
-    {
-        if (is_null($channel_type)) {
-            throw new \InvalidArgumentException('non-nullable channel_type cannot be null');
-        }
-        $this->container['channel_type'] = $channel_type;
-
-        return $this;
-    }
-
-    /**
      * Gets content
      *
      * @return string|null
@@ -608,7 +581,7 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \NexConnServerSdkPhp\Model\MessageMetadataListItem[]|null $metadata List of metadata entries (`CommunityHistoryMessage` uses `List<MetadataItem>`, not a map).
+     * @param \NexConnServerSdkPhp\Model\MessageMetadataListItem[]|null $metadata Structured message metadata entries. Omitted when the original metadata is empty or cannot be parsed.
      *
      * @return self
      */
@@ -618,6 +591,33 @@ class MessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote
+     *
+     * @return string|null
+     */
+    public function getQuote()
+    {
+        return $this->container['quote'];
+    }
+
+    /**
+     * Sets quote
+     *
+     * @param string|null $quote Quoted message details as a JSON string containing msgUID, objectName and fromUserId. Omitted for messages without a quote.
+     *
+     * @return self
+     */
+    public function setQuote($quote)
+    {
+        if (is_null($quote)) {
+            throw new \InvalidArgumentException('non-nullable quote cannot be null');
+        }
+        $this->container['quote'] = $quote;
 
         return $this;
     }

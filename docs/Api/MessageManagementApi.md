@@ -10,7 +10,11 @@ All requests use the primary/backup domains configured by the caller.
 | [**deleteCommunityChannelMessageMetadata()**](MessageManagementApi.md#deleteCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/delete | Delete community-channel message metadata keys |
 | [**deleteMessage()**](MessageManagementApi.md#deleteMessage) | **POST** /v4/message/delete | Delete a message (recall) |
 | [**listChannelTypeMessageMetadata()**](MessageManagementApi.md#listChannelTypeMessageMetadata) | **POST** /v4/channel-type/message/metadata/list | Get message metadata |
+| [**listCommunityChannelHistoryMessages()**](MessageManagementApi.md#listCommunityChannelHistoryMessages) | **POST** /v4/community-channel/history-message/list | List community-channel history messages |
 | [**listCommunityChannelMessageMetadata()**](MessageManagementApi.md#listCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/list | List community-channel message metadata |
+| [**listDirectChannelHistoryMessages()**](MessageManagementApi.md#listDirectChannelHistoryMessages) | **POST** /v4/direct-channel/history-message/list | List direct-channel history messages |
+| [**listGroupChannelHistoryMessages()**](MessageManagementApi.md#listGroupChannelHistoryMessages) | **POST** /v4/group-channel/history-message/list | List group-channel history messages |
+| [**listOpenChannelHistoryMessages()**](MessageManagementApi.md#listOpenChannelHistoryMessages) | **POST** /v4/open-channel/history-message/list | List open-channel history messages |
 | [**sendCommunityChannelMessage()**](MessageManagementApi.md#sendCommunityChannelMessage) | **POST** /v4/community-channel/message/send | Send a community channel message |
 | [**sendDirectChannelMessage()**](MessageManagementApi.md#sendDirectChannelMessage) | **POST** /v4/direct-channel/message/send | Send a direct message |
 | [**sendDirectChannelStreamMessage()**](MessageManagementApi.md#sendDirectChannelStreamMessage) | **POST** /v4/direct-channel/message/stream/send | Send a direct channel stream message |
@@ -406,6 +410,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listCommunityChannelHistoryMessages()`
+
+```php
+listCommunityChannelHistoryMessages($community_channel_history_message_list_request): \NexConnServerSdkPhp\Model\MessageHistoryResponse
+```
+
+List community-channel history messages
+
+Rate limit: 10/sec. Query range is at most 14 days; messages are returned in descending timestamp order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$community_channel_history_message_list_request = new \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest(); // \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest
+
+try {
+    $result = $apiInstance->listCommunityChannelHistoryMessages($community_channel_history_message_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->listCommunityChannelHistoryMessages: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **community_channel_history_message_list_request** | [**\NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest**](../Model/CommunityChannelHistoryMessageListRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\MessageHistoryResponse**](../Model/MessageHistoryResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listCommunityChannelMessageMetadata()`
 
 ```php
@@ -454,6 +522,198 @@ try {
 ### Return type
 
 [**\NexConnServerSdkPhp\Model\CommunityChannelMessageMetadataListResponse**](../Model/CommunityChannelMessageMetadataListResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listDirectChannelHistoryMessages()`
+
+```php
+listDirectChannelHistoryMessages($direct_channel_history_message_list_request): \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse
+```
+
+List direct-channel history messages
+
+Rate limit: 10/sec. Query range is at most 14 days; messages are returned in descending timestamp order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$direct_channel_history_message_list_request = new \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest(); // \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest
+
+try {
+    $result = $apiInstance->listDirectChannelHistoryMessages($direct_channel_history_message_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->listDirectChannelHistoryMessages: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **direct_channel_history_message_list_request** | [**\NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest**](../Model/DirectChannelHistoryMessageListRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse**](../Model/DirectGroupHistoryMessageResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listGroupChannelHistoryMessages()`
+
+```php
+listGroupChannelHistoryMessages($group_channel_history_message_list_request): \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse
+```
+
+List group-channel history messages
+
+Rate limit: 10/sec. Query range is at most 14 days; messages are returned in descending timestamp order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$group_channel_history_message_list_request = new \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest(); // \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest
+
+try {
+    $result = $apiInstance->listGroupChannelHistoryMessages($group_channel_history_message_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->listGroupChannelHistoryMessages: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_channel_history_message_list_request** | [**\NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest**](../Model/GroupChannelHistoryMessageListRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse**](../Model/DirectGroupHistoryMessageResponse.md)
+
+### Authorization
+
+[NexconnSignature](../../README.md#NexconnSignature)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listOpenChannelHistoryMessages()`
+
+```php
+listOpenChannelHistoryMessages($open_channel_history_message_list_request): \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse
+```
+
+List open-channel history messages
+
+Rate limit: 10/sec. Query range is at most 14 days; messages are returned in descending timestamp order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: NexconnSignature
+$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
+
+
+$apiInstance = new NexConnServerSdkPhp\Api\MessageManagementApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+$open_channel_history_message_list_request = new \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest(); // \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest
+
+try {
+    $result = $apiInstance->listOpenChannelHistoryMessages($open_channel_history_message_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessageManagementApi->listOpenChannelHistoryMessages: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **open_channel_history_message_list_request** | [**\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest**](../Model/OpenChannelHistoryMessageListRequest.md)|  | |
+
+
+### Return type
+
+[**\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse**](../Model/OpenChannelHistoryMessageResponse.md)
 
 ### Authorization
 

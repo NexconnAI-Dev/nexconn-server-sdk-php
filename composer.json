@@ -1,6 +1,6 @@
 {
     "name": "nexconnai-dev/nexconn-server-sdk-php",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "OpenAPI specification aligned with the current Nexconn public documentation, PDF source documents, and generated SDK requirements.",
     "keywords": [
         "openapitools",

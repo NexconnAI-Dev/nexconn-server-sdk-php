@@ -144,12 +144,60 @@ class MessageManagementApiTest extends TestCase
     }
 
     /**
+     * Test case for listCommunityChannelHistoryMessages
+     *
+     * List community-channel history messages.
+     *
+     */
+    public function testListCommunityChannelHistoryMessages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for listCommunityChannelMessageMetadata
      *
      * List community-channel message metadata.
      *
      */
     public function testListCommunityChannelMessageMetadata()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for listDirectChannelHistoryMessages
+     *
+     * List direct-channel history messages.
+     *
+     */
+    public function testListDirectChannelHistoryMessages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for listGroupChannelHistoryMessages
+     *
+     * List group-channel history messages.
+     *
+     */
+    public function testListGroupChannelHistoryMessages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for listOpenChannelHistoryMessages
+     *
+     * List open-channel history messages.
+     *
+     */
+    public function testListOpenChannelHistoryMessages()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

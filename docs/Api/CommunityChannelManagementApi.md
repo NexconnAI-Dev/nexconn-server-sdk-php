@@ -14,7 +14,6 @@ All requests use the primary/backup domains configured by the caller.
 | [**deleteCommunitySubchannel()**](CommunityChannelManagementApi.md#deleteCommunitySubchannel) | **POST** /v4/community-channel/subchannel/delete | Delete community subchannel |
 | [**dismissCommunityChannel()**](CommunityChannelManagementApi.md#dismissCommunityChannel) | **POST** /v4/community-channel/dismiss | Dismiss community channel |
 | [**joinCommunityChannel()**](CommunityChannelManagementApi.md#joinCommunityChannel) | **POST** /v4/community-channel/join | Join community channel |
-| [**listCommunityChannelHistoryMessages()**](CommunityChannelManagementApi.md#listCommunityChannelHistoryMessages) | **POST** /v4/community-channel/history-message/list | List community-channel history messages |
 | [**listCommunityChannelSubchannelUserGroups()**](CommunityChannelManagementApi.md#listCommunityChannelSubchannelUserGroups) | **POST** /v4/community-channel/channel/user-group/list | List community channel subchannel user groups |
 | [**listCommunityChannelUserGroupSubchannels()**](CommunityChannelManagementApi.md#listCommunityChannelUserGroupSubchannels) | **POST** /v4/community-channel/user-group/subchannel/list | List community channel user group subchannels |
 | [**listCommunityChannelUserGroups()**](CommunityChannelManagementApi.md#listCommunityChannelUserGroups) | **POST** /v4/community-channel/user-group/list | List community channel user groups |
@@ -637,68 +636,6 @@ try {
 ### Return type
 
 [**\NexConnServerSdkPhp\Model\CodeOnlyResponse**](../Model/CodeOnlyResponse.md)
-
-### Authorization
-
-[NexconnSignature](../../README.md#NexconnSignature)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listCommunityChannelHistoryMessages()`
-
-```php
-listCommunityChannelHistoryMessages($community_channel_history_message_list_request): \NexConnServerSdkPhp\Model\MessageHistoryResponse
-```
-
-List community-channel history messages
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: NexconnSignature
-$config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKey('App-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = NexConnServerSdkPhp\Configuration::getDefaultConfiguration()->setApiKeyPrefix('App-Key', 'Bearer');
-
-
-$apiInstance = new NexConnServerSdkPhp\Api\CommunityChannelManagementApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-$community_channel_history_message_list_request = new \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest(); // \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest
-
-try {
-    $result = $apiInstance->listCommunityChannelHistoryMessages($community_channel_history_message_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CommunityChannelManagementApi->listCommunityChannelHistoryMessages: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **community_channel_history_message_list_request** | [**\NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest**](../Model/CommunityChannelHistoryMessageListRequest.md)|  | |
-
-
-### Return type
-
-[**\NexConnServerSdkPhp\Model\MessageHistoryResponse**](../Model/MessageHistoryResponse.md)
 
 ### Authorization
 

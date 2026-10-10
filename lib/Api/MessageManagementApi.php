@@ -92,7 +92,19 @@ class MessageManagementApi
         'listChannelTypeMessageMetadata' => [
             'application/json',
         ],
+        'listCommunityChannelHistoryMessages' => [
+            'application/json',
+        ],
         'listCommunityChannelMessageMetadata' => [
+            'application/json',
+        ],
+        'listDirectChannelHistoryMessages' => [
+            'application/json',
+        ],
+        'listGroupChannelHistoryMessages' => [
+            'application/json',
+        ],
+        'listOpenChannelHistoryMessages' => [
             'application/json',
         ],
         'sendCommunityChannelMessage' => [
@@ -1929,6 +1941,298 @@ class MessageManagementApi
     }
 
     /**
+     * Operation listCommunityChannelHistoryMessages
+     *
+     * List community-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest $community_channel_history_message_list_request community_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommunityChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NexConnServerSdkPhp\Model\MessageHistoryResponse
+     */
+    public function listCommunityChannelHistoryMessages($community_channel_history_message_list_request, string $contentType = self::contentTypes['listCommunityChannelHistoryMessages'][0])
+    {
+        list($response) = $this->listCommunityChannelHistoryMessagesWithHttpInfo($community_channel_history_message_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listCommunityChannelHistoryMessagesWithHttpInfo
+     *
+     * List community-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest $community_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommunityChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NexConnServerSdkPhp\Model\MessageHistoryResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listCommunityChannelHistoryMessagesWithHttpInfo($community_channel_history_message_list_request, string $contentType = self::contentTypes['listCommunityChannelHistoryMessages'][0])
+    {
+        $request = $this->listCommunityChannelHistoryMessagesRequest($community_channel_history_message_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                if (!$e->hasResponse() || $e->getResponse()->getStatusCode() >= 500) {
+                    $this->config->markDomainFailure();
+                }
+                throw ApiException::fromResponse(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                $this->config->markDomainFailure();
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 500) {
+                $this->config->markDomainFailure();
+            }
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\NexConnServerSdkPhp\Model\MessageHistoryResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw ApiException::fromResponse(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\NexConnServerSdkPhp\Model\MessageHistoryResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NexConnServerSdkPhp\Model\MessageHistoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listCommunityChannelHistoryMessagesAsync
+     *
+     * List community-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest $community_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommunityChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCommunityChannelHistoryMessagesAsync($community_channel_history_message_list_request, string $contentType = self::contentTypes['listCommunityChannelHistoryMessages'][0])
+    {
+        return $this->listCommunityChannelHistoryMessagesAsyncWithHttpInfo($community_channel_history_message_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listCommunityChannelHistoryMessagesAsyncWithHttpInfo
+     *
+     * List community-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest $community_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommunityChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCommunityChannelHistoryMessagesAsyncWithHttpInfo($community_channel_history_message_list_request, string $contentType = self::contentTypes['listCommunityChannelHistoryMessages'][0])
+    {
+        $returnType = '\NexConnServerSdkPhp\Model\MessageHistoryResponse';
+        $request = $this->listCommunityChannelHistoryMessagesRequest($community_channel_history_message_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    if ($response === null || $response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    $statusCode = $response ? $response->getStatusCode() : 0;
+                    throw ApiException::fromResponse(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : null,
+                        $response ? (string) $response->getBody() : null
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listCommunityChannelHistoryMessages'
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\CommunityChannelHistoryMessageListRequest $community_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommunityChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listCommunityChannelHistoryMessagesRequest($community_channel_history_message_list_request, string $contentType = self::contentTypes['listCommunityChannelHistoryMessages'][0])
+    {
+
+        // verify the required parameter 'community_channel_history_message_list_request' is set
+        if ($community_channel_history_message_list_request === null || (is_array($community_channel_history_message_list_request) && count($community_channel_history_message_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $community_channel_history_message_list_request when calling listCommunityChannelHistoryMessages'
+            );
+        }
+
+
+        $resourcePath = '/v4/community-channel/history-message/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        
+        if (isset($community_channel_history_message_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($community_channel_history_message_list_request));
+            } else {
+                $httpBody = $community_channel_history_message_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('App-Key');
+        if ($apiKey !== null) {
+            $headers['App-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+        $headers = $this->config->prepareNexconnHeaders($headers);
+
+        $operationHost = $this->config->resolveHost($this->hostIndex);
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listCommunityChannelMessageMetadata
      *
      * List community-channel message metadata
@@ -2167,6 +2471,882 @@ class MessageManagementApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($community_channel_message_metadata_list_request));
             } else {
                 $httpBody = $community_channel_message_metadata_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('App-Key');
+        if ($apiKey !== null) {
+            $headers['App-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+        $headers = $this->config->prepareNexconnHeaders($headers);
+
+        $operationHost = $this->config->resolveHost($this->hostIndex);
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDirectChannelHistoryMessages
+     *
+     * List direct-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest $direct_channel_history_message_list_request direct_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDirectChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse
+     */
+    public function listDirectChannelHistoryMessages($direct_channel_history_message_list_request, string $contentType = self::contentTypes['listDirectChannelHistoryMessages'][0])
+    {
+        list($response) = $this->listDirectChannelHistoryMessagesWithHttpInfo($direct_channel_history_message_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listDirectChannelHistoryMessagesWithHttpInfo
+     *
+     * List direct-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest $direct_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDirectChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDirectChannelHistoryMessagesWithHttpInfo($direct_channel_history_message_list_request, string $contentType = self::contentTypes['listDirectChannelHistoryMessages'][0])
+    {
+        $request = $this->listDirectChannelHistoryMessagesRequest($direct_channel_history_message_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                if (!$e->hasResponse() || $e->getResponse()->getStatusCode() >= 500) {
+                    $this->config->markDomainFailure();
+                }
+                throw ApiException::fromResponse(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                $this->config->markDomainFailure();
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 500) {
+                $this->config->markDomainFailure();
+            }
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw ApiException::fromResponse(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listDirectChannelHistoryMessagesAsync
+     *
+     * List direct-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest $direct_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDirectChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDirectChannelHistoryMessagesAsync($direct_channel_history_message_list_request, string $contentType = self::contentTypes['listDirectChannelHistoryMessages'][0])
+    {
+        return $this->listDirectChannelHistoryMessagesAsyncWithHttpInfo($direct_channel_history_message_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDirectChannelHistoryMessagesAsyncWithHttpInfo
+     *
+     * List direct-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest $direct_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDirectChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDirectChannelHistoryMessagesAsyncWithHttpInfo($direct_channel_history_message_list_request, string $contentType = self::contentTypes['listDirectChannelHistoryMessages'][0])
+    {
+        $returnType = '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse';
+        $request = $this->listDirectChannelHistoryMessagesRequest($direct_channel_history_message_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    if ($response === null || $response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    $statusCode = $response ? $response->getStatusCode() : 0;
+                    throw ApiException::fromResponse(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : null,
+                        $response ? (string) $response->getBody() : null
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDirectChannelHistoryMessages'
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\DirectChannelHistoryMessageListRequest $direct_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDirectChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listDirectChannelHistoryMessagesRequest($direct_channel_history_message_list_request, string $contentType = self::contentTypes['listDirectChannelHistoryMessages'][0])
+    {
+
+        // verify the required parameter 'direct_channel_history_message_list_request' is set
+        if ($direct_channel_history_message_list_request === null || (is_array($direct_channel_history_message_list_request) && count($direct_channel_history_message_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $direct_channel_history_message_list_request when calling listDirectChannelHistoryMessages'
+            );
+        }
+
+
+        $resourcePath = '/v4/direct-channel/history-message/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        
+        if (isset($direct_channel_history_message_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($direct_channel_history_message_list_request));
+            } else {
+                $httpBody = $direct_channel_history_message_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('App-Key');
+        if ($apiKey !== null) {
+            $headers['App-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+        $headers = $this->config->prepareNexconnHeaders($headers);
+
+        $operationHost = $this->config->resolveHost($this->hostIndex);
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listGroupChannelHistoryMessages
+     *
+     * List group-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest $group_channel_history_message_list_request group_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGroupChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse
+     */
+    public function listGroupChannelHistoryMessages($group_channel_history_message_list_request, string $contentType = self::contentTypes['listGroupChannelHistoryMessages'][0])
+    {
+        list($response) = $this->listGroupChannelHistoryMessagesWithHttpInfo($group_channel_history_message_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listGroupChannelHistoryMessagesWithHttpInfo
+     *
+     * List group-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest $group_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGroupChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listGroupChannelHistoryMessagesWithHttpInfo($group_channel_history_message_list_request, string $contentType = self::contentTypes['listGroupChannelHistoryMessages'][0])
+    {
+        $request = $this->listGroupChannelHistoryMessagesRequest($group_channel_history_message_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                if (!$e->hasResponse() || $e->getResponse()->getStatusCode() >= 500) {
+                    $this->config->markDomainFailure();
+                }
+                throw ApiException::fromResponse(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                $this->config->markDomainFailure();
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 500) {
+                $this->config->markDomainFailure();
+            }
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw ApiException::fromResponse(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listGroupChannelHistoryMessagesAsync
+     *
+     * List group-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest $group_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGroupChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listGroupChannelHistoryMessagesAsync($group_channel_history_message_list_request, string $contentType = self::contentTypes['listGroupChannelHistoryMessages'][0])
+    {
+        return $this->listGroupChannelHistoryMessagesAsyncWithHttpInfo($group_channel_history_message_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listGroupChannelHistoryMessagesAsyncWithHttpInfo
+     *
+     * List group-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest $group_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGroupChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listGroupChannelHistoryMessagesAsyncWithHttpInfo($group_channel_history_message_list_request, string $contentType = self::contentTypes['listGroupChannelHistoryMessages'][0])
+    {
+        $returnType = '\NexConnServerSdkPhp\Model\DirectGroupHistoryMessageResponse';
+        $request = $this->listGroupChannelHistoryMessagesRequest($group_channel_history_message_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    if ($response === null || $response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    $statusCode = $response ? $response->getStatusCode() : 0;
+                    throw ApiException::fromResponse(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : null,
+                        $response ? (string) $response->getBody() : null
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listGroupChannelHistoryMessages'
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\GroupChannelHistoryMessageListRequest $group_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGroupChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listGroupChannelHistoryMessagesRequest($group_channel_history_message_list_request, string $contentType = self::contentTypes['listGroupChannelHistoryMessages'][0])
+    {
+
+        // verify the required parameter 'group_channel_history_message_list_request' is set
+        if ($group_channel_history_message_list_request === null || (is_array($group_channel_history_message_list_request) && count($group_channel_history_message_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_channel_history_message_list_request when calling listGroupChannelHistoryMessages'
+            );
+        }
+
+
+        $resourcePath = '/v4/group-channel/history-message/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        
+        if (isset($group_channel_history_message_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($group_channel_history_message_list_request));
+            } else {
+                $httpBody = $group_channel_history_message_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('App-Key');
+        if ($apiKey !== null) {
+            $headers['App-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+        $headers = $this->config->prepareNexconnHeaders($headers);
+
+        $operationHost = $this->config->resolveHost($this->hostIndex);
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listOpenChannelHistoryMessages
+     *
+     * List open-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest $open_channel_history_message_list_request open_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpenChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse
+     */
+    public function listOpenChannelHistoryMessages($open_channel_history_message_list_request, string $contentType = self::contentTypes['listOpenChannelHistoryMessages'][0])
+    {
+        list($response) = $this->listOpenChannelHistoryMessagesWithHttpInfo($open_channel_history_message_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listOpenChannelHistoryMessagesWithHttpInfo
+     *
+     * List open-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest $open_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpenChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \NexConnServerSdkPhp\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listOpenChannelHistoryMessagesWithHttpInfo($open_channel_history_message_list_request, string $contentType = self::contentTypes['listOpenChannelHistoryMessages'][0])
+    {
+        $request = $this->listOpenChannelHistoryMessagesRequest($open_channel_history_message_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                if (!$e->hasResponse() || $e->getResponse()->getStatusCode() >= 500) {
+                    $this->config->markDomainFailure();
+                }
+                throw ApiException::fromResponse(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                $this->config->markDomainFailure();
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+            if ($statusCode >= 500) {
+                $this->config->markDomainFailure();
+            }
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw ApiException::fromResponse(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listOpenChannelHistoryMessagesAsync
+     *
+     * List open-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest $open_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpenChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOpenChannelHistoryMessagesAsync($open_channel_history_message_list_request, string $contentType = self::contentTypes['listOpenChannelHistoryMessages'][0])
+    {
+        return $this->listOpenChannelHistoryMessagesAsyncWithHttpInfo($open_channel_history_message_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listOpenChannelHistoryMessagesAsyncWithHttpInfo
+     *
+     * List open-channel history messages
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest $open_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpenChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOpenChannelHistoryMessagesAsyncWithHttpInfo($open_channel_history_message_list_request, string $contentType = self::contentTypes['listOpenChannelHistoryMessages'][0])
+    {
+        $returnType = '\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResponse';
+        $request = $this->listOpenChannelHistoryMessagesRequest($open_channel_history_message_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    if ($response === null || $response->getStatusCode() >= 500) {
+                        $this->config->markDomainFailure();
+                    }
+                    $statusCode = $response ? $response->getStatusCode() : 0;
+                    throw ApiException::fromResponse(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : null,
+                        $response ? (string) $response->getBody() : null
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listOpenChannelHistoryMessages'
+     *
+
+     * @param  \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageListRequest $open_channel_history_message_list_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpenChannelHistoryMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listOpenChannelHistoryMessagesRequest($open_channel_history_message_list_request, string $contentType = self::contentTypes['listOpenChannelHistoryMessages'][0])
+    {
+
+        // verify the required parameter 'open_channel_history_message_list_request' is set
+        if ($open_channel_history_message_list_request === null || (is_array($open_channel_history_message_list_request) && count($open_channel_history_message_list_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $open_channel_history_message_list_request when calling listOpenChannelHistoryMessages'
+            );
+        }
+
+
+        $resourcePath = '/v4/open-channel/history-message/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        
+        if (isset($open_channel_history_message_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($open_channel_history_message_list_request));
+            } else {
+                $httpBody = $open_channel_history_message_list_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

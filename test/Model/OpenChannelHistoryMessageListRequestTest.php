@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageRecordTest
+ * OpenChannelHistoryMessageListRequestTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace NexConnServerSdkPhp\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * MessageRecordTest Class Doc Comment
+ * OpenChannelHistoryMessageListRequestTest Class Doc Comment
  *
  * @category    Class
- * @description MessageRecord
+ * @description OpenChannelHistoryMessageListRequest
  * @package     NexConnServerSdkPhp
  * @author      OpenAPI Generator team
  * @link        https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  */
-class MessageRecordTest extends TestCase
+class OpenChannelHistoryMessageListRequestTest extends TestCase
 {
 
     /**
@@ -71,9 +71,18 @@ class MessageRecordTest extends TestCase
     }
 
     /**
-     * Test "MessageRecord"
+     * Test "OpenChannelHistoryMessageListRequest"
      */
-    public function testMessageRecord()
+    public function testOpenChannelHistoryMessageListRequest()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "user_id"
+     */
+    public function testPropertyUserId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -89,81 +98,36 @@ class MessageRecordTest extends TestCase
     }
 
     /**
-     * Test attribute "subchannel_id"
+     * Test attribute "start_at"
      */
-    public function testPropertySubchannelId()
+    public function testPropertyStartAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "from_user_id"
+     * Test attribute "end_at"
      */
-    public function testPropertyFromUserId()
+    public function testPropertyEndAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "message_id"
+     * Test attribute "page_size"
      */
-    public function testPropertyMessageId()
+    public function testPropertyPageSize()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "sent_at"
+     * Test attribute "include_start"
      */
-    public function testPropertySentAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "message_type"
-     */
-    public function testPropertyMessageType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "content"
-     */
-    public function testPropertyContent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "has_metadata"
-     */
-    public function testPropertyHasMetadata()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "metadata"
-     */
-    public function testPropertyMetadata()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "quote"
-     */
-    public function testPropertyQuote()
+    public function testPropertyIncludeStart()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

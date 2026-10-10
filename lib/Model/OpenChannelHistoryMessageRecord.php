@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunityChannelHistoryMessageListRequest
+ * OpenChannelHistoryMessageRecord
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \NexConnServerSdkPhp\ObjectSerializer;
 
 /**
- * CommunityChannelHistoryMessageListRequest Class Doc Comment
+ * OpenChannelHistoryMessageRecord Class Doc Comment
  *
  * @category Class
  * @package  NexConnServerSdkPhp
@@ -40,7 +40,7 @@ use \NexConnServerSdkPhp\ObjectSerializer;
  * @link     https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  * @implements \ArrayAccess<string, mixed>
  */
-class CommunityChannelHistoryMessageListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OpenChannelHistoryMessageRecord implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CommunityChannelHistoryMessageListRequest';
+    protected static $openAPIModelName = 'OpenChannelHistoryMessageRecord';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'channel_id' => 'string',
-        'subchannel_id' => 'string',
-        'user_id' => 'string',
-        'start_at' => 'int',
-        'end_at' => 'int',
-        'page_size' => 'int',
-        'include_start' => 'bool'
+        'from_user_id' => 'string',
+        'message_id' => 'string',
+        'sent_at' => 'int',
+        'message_type' => 'string',
+        'content' => 'string',
+        'quote' => 'string'
     ];
 
     /**
@@ -75,12 +75,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'channel_id' => null,
-        'subchannel_id' => null,
-        'user_id' => null,
-        'start_at' => 'int64',
-        'end_at' => 'int64',
-        'page_size' => 'int32',
-        'include_start' => null
+        'from_user_id' => null,
+        'message_id' => null,
+        'sent_at' => 'int64',
+        'message_type' => null,
+        'content' => null,
+        'quote' => null
     ];
 
     /**
@@ -90,12 +90,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'channel_id' => false,
-        'subchannel_id' => false,
-        'user_id' => false,
-        'start_at' => false,
-        'end_at' => false,
-        'page_size' => false,
-        'include_start' => false
+        'from_user_id' => false,
+        'message_id' => false,
+        'sent_at' => false,
+        'message_type' => false,
+        'content' => false,
+        'quote' => false
     ];
 
     /**
@@ -185,12 +185,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'channel_id' => 'channelId',
-        'subchannel_id' => 'subchannelId',
-        'user_id' => 'userId',
-        'start_at' => 'startAt',
-        'end_at' => 'endAt',
-        'page_size' => 'pageSize',
-        'include_start' => 'includeStart'
+        'from_user_id' => 'fromUserId',
+        'message_id' => 'messageId',
+        'sent_at' => 'sentAt',
+        'message_type' => 'messageType',
+        'content' => 'content',
+        'quote' => 'quote'
     ];
 
     /**
@@ -200,12 +200,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      */
     protected static $setters = [
         'channel_id' => 'setChannelId',
-        'subchannel_id' => 'setSubchannelId',
-        'user_id' => 'setUserId',
-        'start_at' => 'setStartAt',
-        'end_at' => 'setEndAt',
-        'page_size' => 'setPageSize',
-        'include_start' => 'setIncludeStart'
+        'from_user_id' => 'setFromUserId',
+        'message_id' => 'setMessageId',
+        'sent_at' => 'setSentAt',
+        'message_type' => 'setMessageType',
+        'content' => 'setContent',
+        'quote' => 'setQuote'
     ];
 
     /**
@@ -215,12 +215,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      */
     protected static $getters = [
         'channel_id' => 'getChannelId',
-        'subchannel_id' => 'getSubchannelId',
-        'user_id' => 'getUserId',
-        'start_at' => 'getStartAt',
-        'end_at' => 'getEndAt',
-        'page_size' => 'getPageSize',
-        'include_start' => 'getIncludeStart'
+        'from_user_id' => 'getFromUserId',
+        'message_id' => 'getMessageId',
+        'sent_at' => 'getSentAt',
+        'message_type' => 'getMessageType',
+        'content' => 'getContent',
+        'quote' => 'getQuote'
     ];
 
     /**
@@ -281,12 +281,12 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     public function __construct(?array $data = null)
     {
         $this->setIfExists('channel_id', $data ?? [], null);
-        $this->setIfExists('subchannel_id', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('start_at', $data ?? [], null);
-        $this->setIfExists('end_at', $data ?? [], null);
-        $this->setIfExists('page_size', $data ?? [], 10);
-        $this->setIfExists('include_start', $data ?? [], null);
+        $this->setIfExists('from_user_id', $data ?? [], null);
+        $this->setIfExists('message_id', $data ?? [], null);
+        $this->setIfExists('sent_at', $data ?? [], null);
+        $this->setIfExists('message_type', $data ?? [], null);
+        $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('quote', $data ?? [], null);
     }
 
     /**
@@ -316,29 +316,6 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['channel_id'] === null) {
-            $invalidProperties[] = "'channel_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['start_at'] === null) {
-            $invalidProperties[] = "'start_at' can't be null";
-        }
-        if ($this->container['end_at'] === null) {
-            $invalidProperties[] = "'end_at' can't be null";
-        }
-        if (!is_null($this->container['page_size']) && ($this->container['page_size'] > 100)) {
-            $invalidProperties[] = "invalid value for 'page_size', must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['page_size']) && ($this->container['page_size'] < 1)) {
-            $invalidProperties[] = "invalid value for 'page_size', must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['include_start'] === null) {
-            $invalidProperties[] = "'include_start' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -357,7 +334,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     /**
      * Gets channel_id
      *
-     * @return string
+     * @return string|null
      */
     public function getChannelId()
     {
@@ -367,7 +344,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     /**
      * Sets channel_id
      *
-     * @param string $channel_id Community channel ID.
+     * @param string|null $channel_id Channel identifier of the stored message.
      *
      * @return self
      */
@@ -382,171 +359,163 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     }
 
     /**
-     * Gets subchannel_id
+     * Gets from_user_id
      *
      * @return string|null
      */
-    public function getSubchannelId()
+    public function getFromUserId()
     {
-        return $this->container['subchannel_id'];
+        return $this->container['from_user_id'];
     }
 
     /**
-     * Sets subchannel_id
+     * Sets from_user_id
      *
-     * @param string|null $subchannel_id Optional community subchannel ID. When omitted, messages from the whole community channel are queried.
+     * @param string|null $from_user_id Sender user ID of the stored message.
      *
      * @return self
      */
-    public function setSubchannelId($subchannel_id)
+    public function setFromUserId($from_user_id)
     {
-        if (is_null($subchannel_id)) {
-            throw new \InvalidArgumentException('non-nullable subchannel_id cannot be null');
+        if (is_null($from_user_id)) {
+            throw new \InvalidArgumentException('non-nullable from_user_id cannot be null');
         }
-        $this->container['subchannel_id'] = $subchannel_id;
+        $this->container['from_user_id'] = $from_user_id;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets message_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getUserId()
+    public function getMessageId()
     {
-        return $this->container['user_id'];
+        return $this->container['message_id'];
     }
 
     /**
-     * Sets user_id
+     * Sets message_id
      *
-     * @param string $user_id User ID of the community-channel participant.
+     * @param string|null $message_id Unique message ID.
      *
      * @return self
      */
-    public function setUserId($user_id)
+    public function setMessageId($message_id)
     {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+        if (is_null($message_id)) {
+            throw new \InvalidArgumentException('non-nullable message_id cannot be null');
         }
-        $this->container['user_id'] = $user_id;
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }
 
     /**
-     * Gets start_at
-     *
-     * @return int
-     */
-    public function getStartAt()
-    {
-        return $this->container['start_at'];
-    }
-
-    /**
-     * Sets start_at
-     *
-     * @param int $start_at Query start timestamp in Unix milliseconds. Must be greater than or equal to `endAt`; the range cannot exceed 14 days.
-     *
-     * @return self
-     */
-    public function setStartAt($start_at)
-    {
-        if (is_null($start_at)) {
-            throw new \InvalidArgumentException('non-nullable start_at cannot be null');
-        }
-        $this->container['start_at'] = $start_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_at
-     *
-     * @return int
-     */
-    public function getEndAt()
-    {
-        return $this->container['end_at'];
-    }
-
-    /**
-     * Sets end_at
-     *
-     * @param int $end_at Query end timestamp in Unix milliseconds. Messages are returned in descending timestamp order.
-     *
-     * @return self
-     */
-    public function setEndAt($end_at)
-    {
-        if (is_null($end_at)) {
-            throw new \InvalidArgumentException('non-nullable end_at cannot be null');
-        }
-        $this->container['end_at'] = $end_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_size
+     * Gets sent_at
      *
      * @return int|null
      */
-    public function getPageSize()
+    public function getSentAt()
     {
-        return $this->container['page_size'];
+        return $this->container['sent_at'];
     }
 
     /**
-     * Sets page_size
+     * Sets sent_at
      *
-     * @param int|null $page_size Number of messages to return. Must be between 1 and 100.
+     * @param int|null $sent_at Message send timestamp in milliseconds.
      *
      * @return self
      */
-    public function setPageSize($page_size)
+    public function setSentAt($sent_at)
     {
-        if (is_null($page_size)) {
-            throw new \InvalidArgumentException('non-nullable page_size cannot be null');
+        if (is_null($sent_at)) {
+            throw new \InvalidArgumentException('non-nullable sent_at cannot be null');
         }
-
-        if (($page_size > 100)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be smaller than or equal to 100.');
-        }
-        if (($page_size < 1)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['page_size'] = $page_size;
+        $this->container['sent_at'] = $sent_at;
 
         return $this;
     }
 
     /**
-     * Gets include_start
+     * Gets message_type
      *
-     * @return bool
+     * @return string|null
      */
-    public function getIncludeStart()
+    public function getMessageType()
     {
-        return $this->container['include_start'];
+        return $this->container['message_type'];
     }
 
     /**
-     * Sets include_start
+     * Sets message_type
      *
-     * @param bool $include_start Whether to include the message at `startAt` when it matches the query boundary.
+     * @param string|null $message_type Message type of the stored message.
      *
      * @return self
      */
-    public function setIncludeStart($include_start)
+    public function setMessageType($message_type)
     {
-        if (is_null($include_start)) {
-            throw new \InvalidArgumentException('non-nullable include_start cannot be null');
+        if (is_null($message_type)) {
+            throw new \InvalidArgumentException('non-nullable message_type cannot be null');
         }
-        $this->container['include_start'] = $include_start;
+        $this->container['message_type'] = $message_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string|null $content Raw message content payload as stored by the service.
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        if (is_null($content)) {
+            throw new \InvalidArgumentException('non-nullable content cannot be null');
+        }
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote
+     *
+     * @return string|null
+     */
+    public function getQuote()
+    {
+        return $this->container['quote'];
+    }
+
+    /**
+     * Sets quote
+     *
+     * @param string|null $quote Quoted message details as a JSON string containing msgUID, objectName and fromUserId. Omitted for messages without a quote.
+     *
+     * @return self
+     */
+    public function setQuote($quote)
+    {
+        if (is_null($quote)) {
+            throw new \InvalidArgumentException('non-nullable quote cannot be null');
+        }
+        $this->container['quote'] = $quote;
 
         return $this;
     }

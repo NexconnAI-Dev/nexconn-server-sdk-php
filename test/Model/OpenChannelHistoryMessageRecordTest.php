@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageRecordTest
+ * OpenChannelHistoryMessageRecordTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace NexConnServerSdkPhp\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * MessageRecordTest Class Doc Comment
+ * OpenChannelHistoryMessageRecordTest Class Doc Comment
  *
  * @category    Class
- * @description MessageRecord
+ * @description OpenChannelHistoryMessageRecord
  * @package     NexConnServerSdkPhp
  * @author      OpenAPI Generator team
  * @link        https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  */
-class MessageRecordTest extends TestCase
+class OpenChannelHistoryMessageRecordTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class MessageRecordTest extends TestCase
     }
 
     /**
-     * Test "MessageRecord"
+     * Test "OpenChannelHistoryMessageRecord"
      */
-    public function testMessageRecord()
+    public function testOpenChannelHistoryMessageRecord()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -83,15 +83,6 @@ class MessageRecordTest extends TestCase
      * Test attribute "channel_id"
      */
     public function testPropertyChannelId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subchannel_id"
-     */
-    public function testPropertySubchannelId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -137,24 +128,6 @@ class MessageRecordTest extends TestCase
      * Test attribute "content"
      */
     public function testPropertyContent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "has_metadata"
-     */
-    public function testPropertyHasMetadata()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "metadata"
-     */
-    public function testPropertyMetadata()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
