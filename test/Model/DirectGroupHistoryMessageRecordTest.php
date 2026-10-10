@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageRecordTest
+ * DirectGroupHistoryMessageRecordTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace NexConnServerSdkPhp\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * MessageRecordTest Class Doc Comment
+ * DirectGroupHistoryMessageRecordTest Class Doc Comment
  *
  * @category    Class
- * @description MessageRecord
+ * @description DirectGroupHistoryMessageRecord
  * @package     NexConnServerSdkPhp
  * @author      OpenAPI Generator team
  * @link        https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  */
-class MessageRecordTest extends TestCase
+class DirectGroupHistoryMessageRecordTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class MessageRecordTest extends TestCase
     }
 
     /**
-     * Test "MessageRecord"
+     * Test "DirectGroupHistoryMessageRecord"
      */
-    public function testMessageRecord()
+    public function testDirectGroupHistoryMessageRecord()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -83,15 +83,6 @@ class MessageRecordTest extends TestCase
      * Test attribute "channel_id"
      */
     public function testPropertyChannelId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subchannel_id"
-     */
-    public function testPropertySubchannelId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -155,6 +146,15 @@ class MessageRecordTest extends TestCase
      * Test attribute "metadata"
      */
     public function testPropertyMetadata()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ai_generated"
+     */
+    public function testPropertyAiGenerated()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

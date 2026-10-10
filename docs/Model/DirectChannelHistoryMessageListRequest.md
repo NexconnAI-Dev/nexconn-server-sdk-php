@@ -1,12 +1,11 @@
-# CommunityChannelHistoryMessageListRequest
+# DirectChannelHistoryMessageListRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **string** | Community channel ID. |
-**subchannel_id** | **string** | Optional community subchannel ID. When omitted, messages from the whole community channel are queried. | [optional]
-**user_id** | **string** | User ID of the community-channel participant. |
+**user_id** | **string** | User ID of the direct-channel participant. |
+**channel_id** | **string** | Direct channel ID. |
 **start_at** | **int** | Query start timestamp in Unix milliseconds. Must be greater than or equal to &#x60;endAt&#x60;; the range cannot exceed 14 days. |
 **end_at** | **int** | Query end timestamp in Unix milliseconds. Messages are returned in descending timestamp order. |
 **page_size** | **int** | Number of messages to return. Must be between 1 and 100. | [optional] [default to 10]

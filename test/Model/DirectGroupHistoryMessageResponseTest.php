@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunityChannelHistoryMessageListRequestTest
+ * DirectGroupHistoryMessageResponseTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace NexConnServerSdkPhp\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CommunityChannelHistoryMessageListRequestTest Class Doc Comment
+ * DirectGroupHistoryMessageResponseTest Class Doc Comment
  *
  * @category    Class
- * @description CommunityChannelHistoryMessageListRequest
+ * @description DirectGroupHistoryMessageResponse
  * @package     NexConnServerSdkPhp
  * @author      OpenAPI Generator team
  * @link        https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  */
-class CommunityChannelHistoryMessageListRequestTest extends TestCase
+class DirectGroupHistoryMessageResponseTest extends TestCase
 {
 
     /**
@@ -71,72 +71,27 @@ class CommunityChannelHistoryMessageListRequestTest extends TestCase
     }
 
     /**
-     * Test "CommunityChannelHistoryMessageListRequest"
+     * Test "DirectGroupHistoryMessageResponse"
      */
-    public function testCommunityChannelHistoryMessageListRequest()
+    public function testDirectGroupHistoryMessageResponse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "channel_id"
+     * Test attribute "code"
      */
-    public function testPropertyChannelId()
+    public function testPropertyCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "subchannel_id"
+     * Test attribute "result"
      */
-    public function testPropertySubchannelId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "user_id"
-     */
-    public function testPropertyUserId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "start_at"
-     */
-    public function testPropertyStartAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "end_at"
-     */
-    public function testPropertyEndAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "page_size"
-     */
-    public function testPropertyPageSize()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "include_start"
-     */
-    public function testPropertyIncludeStart()
+    public function testPropertyResult()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

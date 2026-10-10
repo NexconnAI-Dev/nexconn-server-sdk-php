@@ -192,18 +192,6 @@ class CommunityChannelManagementApiTest extends TestCase
     }
 
     /**
-     * Test case for listCommunityChannelHistoryMessages
-     *
-     * List community-channel history messages.
-     *
-     */
-    public function testListCommunityChannelHistoryMessages()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test case for listCommunityChannelSubchannelUserGroups
      *
      * List community channel subchannel user groups.

@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunityChannelHistoryMessageListRequest
+ * OpenChannelHistoryMessageResponse
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \NexConnServerSdkPhp\ObjectSerializer;
 
 /**
- * CommunityChannelHistoryMessageListRequest Class Doc Comment
+ * OpenChannelHistoryMessageResponse Class Doc Comment
  *
  * @category Class
  * @package  NexConnServerSdkPhp
@@ -40,7 +40,7 @@ use \NexConnServerSdkPhp\ObjectSerializer;
  * @link     https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  * @implements \ArrayAccess<string, mixed>
  */
-class CommunityChannelHistoryMessageListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OpenChannelHistoryMessageResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CommunityChannelHistoryMessageListRequest';
+    protected static $openAPIModelName = 'OpenChannelHistoryMessageResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'channel_id' => 'string',
-        'subchannel_id' => 'string',
-        'user_id' => 'string',
-        'start_at' => 'int',
-        'end_at' => 'int',
-        'page_size' => 'int',
-        'include_start' => 'bool'
+        'code' => 'int',
+        'result' => '\NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResult'
     ];
 
     /**
@@ -74,13 +69,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'channel_id' => null,
-        'subchannel_id' => null,
-        'user_id' => null,
-        'start_at' => 'int64',
-        'end_at' => 'int64',
-        'page_size' => 'int32',
-        'include_start' => null
+        'code' => 'int32',
+        'result' => null
     ];
 
     /**
@@ -89,13 +79,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'channel_id' => false,
-        'subchannel_id' => false,
-        'user_id' => false,
-        'start_at' => false,
-        'end_at' => false,
-        'page_size' => false,
-        'include_start' => false
+        'code' => false,
+        'result' => false
     ];
 
     /**
@@ -184,13 +169,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'channel_id' => 'channelId',
-        'subchannel_id' => 'subchannelId',
-        'user_id' => 'userId',
-        'start_at' => 'startAt',
-        'end_at' => 'endAt',
-        'page_size' => 'pageSize',
-        'include_start' => 'includeStart'
+        'code' => 'code',
+        'result' => 'result'
     ];
 
     /**
@@ -199,13 +179,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'channel_id' => 'setChannelId',
-        'subchannel_id' => 'setSubchannelId',
-        'user_id' => 'setUserId',
-        'start_at' => 'setStartAt',
-        'end_at' => 'setEndAt',
-        'page_size' => 'setPageSize',
-        'include_start' => 'setIncludeStart'
+        'code' => 'setCode',
+        'result' => 'setResult'
     ];
 
     /**
@@ -214,13 +189,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'channel_id' => 'getChannelId',
-        'subchannel_id' => 'getSubchannelId',
-        'user_id' => 'getUserId',
-        'start_at' => 'getStartAt',
-        'end_at' => 'getEndAt',
-        'page_size' => 'getPageSize',
-        'include_start' => 'getIncludeStart'
+        'code' => 'getCode',
+        'result' => 'getResult'
     ];
 
     /**
@@ -280,13 +250,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('channel_id', $data ?? [], null);
-        $this->setIfExists('subchannel_id', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('start_at', $data ?? [], null);
-        $this->setIfExists('end_at', $data ?? [], null);
-        $this->setIfExists('page_size', $data ?? [], 10);
-        $this->setIfExists('include_start', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('result', $data ?? [], null);
     }
 
     /**
@@ -316,28 +281,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['channel_id'] === null) {
-            $invalidProperties[] = "'channel_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['start_at'] === null) {
-            $invalidProperties[] = "'start_at' can't be null";
-        }
-        if ($this->container['end_at'] === null) {
-            $invalidProperties[] = "'end_at' can't be null";
-        }
-        if (!is_null($this->container['page_size']) && ($this->container['page_size'] > 100)) {
-            $invalidProperties[] = "invalid value for 'page_size', must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['page_size']) && ($this->container['page_size'] < 1)) {
-            $invalidProperties[] = "invalid value for 'page_size', must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['include_start'] === null) {
-            $invalidProperties[] = "'include_start' can't be null";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
         return $invalidProperties;
     }
@@ -355,198 +300,55 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
 
 
     /**
-     * Gets channel_id
-     *
-     * @return string
-     */
-    public function getChannelId()
-    {
-        return $this->container['channel_id'];
-    }
-
-    /**
-     * Sets channel_id
-     *
-     * @param string $channel_id Community channel ID.
-     *
-     * @return self
-     */
-    public function setChannelId($channel_id)
-    {
-        if (is_null($channel_id)) {
-            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
-        }
-        $this->container['channel_id'] = $channel_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets subchannel_id
-     *
-     * @return string|null
-     */
-    public function getSubchannelId()
-    {
-        return $this->container['subchannel_id'];
-    }
-
-    /**
-     * Sets subchannel_id
-     *
-     * @param string|null $subchannel_id Optional community subchannel ID. When omitted, messages from the whole community channel are queried.
-     *
-     * @return self
-     */
-    public function setSubchannelId($subchannel_id)
-    {
-        if (is_null($subchannel_id)) {
-            throw new \InvalidArgumentException('non-nullable subchannel_id cannot be null');
-        }
-        $this->container['subchannel_id'] = $subchannel_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return string
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param string $user_id User ID of the community-channel participant.
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
-        }
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_at
+     * Gets code
      *
      * @return int
      */
-    public function getStartAt()
+    public function getCode()
     {
-        return $this->container['start_at'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets start_at
+     * Sets code
      *
-     * @param int $start_at Query start timestamp in Unix milliseconds. Must be greater than or equal to `endAt`; the range cannot exceed 14 days.
+     * @param int $code code
      *
      * @return self
      */
-    public function setStartAt($start_at)
+    public function setCode($code)
     {
-        if (is_null($start_at)) {
-            throw new \InvalidArgumentException('non-nullable start_at cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['start_at'] = $start_at;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets end_at
+     * Gets result
      *
-     * @return int
+     * @return \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResult|null
      */
-    public function getEndAt()
+    public function getResult()
     {
-        return $this->container['end_at'];
+        return $this->container['result'];
     }
 
     /**
-     * Sets end_at
+     * Sets result
      *
-     * @param int $end_at Query end timestamp in Unix milliseconds. Messages are returned in descending timestamp order.
+     * @param \NexConnServerSdkPhp\Model\OpenChannelHistoryMessageResult|null $result result
      *
      * @return self
      */
-    public function setEndAt($end_at)
+    public function setResult($result)
     {
-        if (is_null($end_at)) {
-            throw new \InvalidArgumentException('non-nullable end_at cannot be null');
+        if (is_null($result)) {
+            throw new \InvalidArgumentException('non-nullable result cannot be null');
         }
-        $this->container['end_at'] = $end_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_size
-     *
-     * @return int|null
-     */
-    public function getPageSize()
-    {
-        return $this->container['page_size'];
-    }
-
-    /**
-     * Sets page_size
-     *
-     * @param int|null $page_size Number of messages to return. Must be between 1 and 100.
-     *
-     * @return self
-     */
-    public function setPageSize($page_size)
-    {
-        if (is_null($page_size)) {
-            throw new \InvalidArgumentException('non-nullable page_size cannot be null');
-        }
-
-        if (($page_size > 100)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be smaller than or equal to 100.');
-        }
-        if (($page_size < 1)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['page_size'] = $page_size;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_start
-     *
-     * @return bool
-     */
-    public function getIncludeStart()
-    {
-        return $this->container['include_start'];
-    }
-
-    /**
-     * Sets include_start
-     *
-     * @param bool $include_start Whether to include the message at `startAt` when it matches the query boundary.
-     *
-     * @return self
-     */
-    public function setIncludeStart($include_start)
-    {
-        if (is_null($include_start)) {
-            throw new \InvalidArgumentException('non-nullable include_start cannot be null');
-        }
-        $this->container['include_start'] = $include_start;
+        $this->container['result'] = $result;
 
         return $this;
     }

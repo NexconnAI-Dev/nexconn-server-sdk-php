@@ -1,7 +1,7 @@
 # nexconn-sdk-php
 
 Nexconn Server API
-- API version: 0.1.1
+- API version: 0.1.2
   - Generator version: 7.14.0
 
 OpenAPI specification aligned with the current Nexconn public documentation, PDF source documents, and generated SDK requirements.
@@ -19,13 +19,13 @@ Install from the Git repository:
 
 ```bash
 composer config repositories.nexconn-sdk-php vcs https://github.com/NexconnAI-Dev/nexconn-server-sdk-php.git
-composer require nexconnai-dev/nexconn-server-sdk-php:^v0.1.1
+composer require nexconnai-dev/nexconn-server-sdk-php:^v0.1.2
 ```
 
 Or install a specific version:
 
 ```bash
-composer require nexconnai-dev/nexconn-server-sdk-php:v0.1.1
+composer require nexconnai-dev/nexconn-server-sdk-php:v0.1.2
 ```
 
 ## Quick Start
@@ -117,7 +117,7 @@ All exception subclasses provide the following methods:
 
 - Automatic Nexconn request signing when `setNexconnCredentials()` is configured
 - Built-in multi-domain failover support via `setPrimaryBackupDomains()`
-- Default `User-Agent`: `nexconn-sdk-php/0.1.1`
+- Default `User-Agent`: `nexconn-sdk-php/0.1.2`
 - Automatic `X-Request-ID` generation
 
 ## Endpoints
@@ -148,7 +148,6 @@ Class | Method | HTTP request | Description
 *CommunityChannelManagementApi* | [**deleteCommunitySubchannel**](docs/Api/CommunityChannelManagementApi.md#deleteCommunitySubchannel) | **POST** /v4/community-channel/subchannel/delete | Delete community subchannel
 *CommunityChannelManagementApi* | [**dismissCommunityChannel**](docs/Api/CommunityChannelManagementApi.md#dismissCommunityChannel) | **POST** /v4/community-channel/dismiss | Dismiss community channel
 *CommunityChannelManagementApi* | [**joinCommunityChannel**](docs/Api/CommunityChannelManagementApi.md#joinCommunityChannel) | **POST** /v4/community-channel/join | Join community channel
-*CommunityChannelManagementApi* | [**listCommunityChannelHistoryMessages**](docs/Api/CommunityChannelManagementApi.md#listCommunityChannelHistoryMessages) | **POST** /v4/community-channel/history-message/list | List community-channel history messages
 *CommunityChannelManagementApi* | [**listCommunityChannelSubchannelUserGroups**](docs/Api/CommunityChannelManagementApi.md#listCommunityChannelSubchannelUserGroups) | **POST** /v4/community-channel/channel/user-group/list | List community channel subchannel user groups
 *CommunityChannelManagementApi* | [**listCommunityChannelUserGroupSubchannels**](docs/Api/CommunityChannelManagementApi.md#listCommunityChannelUserGroupSubchannels) | **POST** /v4/community-channel/user-group/subchannel/list | List community channel user group subchannels
 *CommunityChannelManagementApi* | [**listCommunityChannelUserGroups**](docs/Api/CommunityChannelManagementApi.md#listCommunityChannelUserGroups) | **POST** /v4/community-channel/user-group/list | List community channel user groups
@@ -215,7 +214,11 @@ Class | Method | HTTP request | Description
 *MessageManagementApi* | [**deleteCommunityChannelMessageMetadata**](docs/Api/MessageManagementApi.md#deleteCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/delete | Delete community-channel message metadata keys
 *MessageManagementApi* | [**deleteMessage**](docs/Api/MessageManagementApi.md#deleteMessage) | **POST** /v4/message/delete | Delete a message (recall)
 *MessageManagementApi* | [**listChannelTypeMessageMetadata**](docs/Api/MessageManagementApi.md#listChannelTypeMessageMetadata) | **POST** /v4/channel-type/message/metadata/list | Get message metadata
+*MessageManagementApi* | [**listCommunityChannelHistoryMessages**](docs/Api/MessageManagementApi.md#listCommunityChannelHistoryMessages) | **POST** /v4/community-channel/history-message/list | List community-channel history messages
 *MessageManagementApi* | [**listCommunityChannelMessageMetadata**](docs/Api/MessageManagementApi.md#listCommunityChannelMessageMetadata) | **POST** /v4/community-channel/message/metadata/list | List community-channel message metadata
+*MessageManagementApi* | [**listDirectChannelHistoryMessages**](docs/Api/MessageManagementApi.md#listDirectChannelHistoryMessages) | **POST** /v4/direct-channel/history-message/list | List direct-channel history messages
+*MessageManagementApi* | [**listGroupChannelHistoryMessages**](docs/Api/MessageManagementApi.md#listGroupChannelHistoryMessages) | **POST** /v4/group-channel/history-message/list | List group-channel history messages
+*MessageManagementApi* | [**listOpenChannelHistoryMessages**](docs/Api/MessageManagementApi.md#listOpenChannelHistoryMessages) | **POST** /v4/open-channel/history-message/list | List open-channel history messages
 *MessageManagementApi* | [**sendCommunityChannelMessage**](docs/Api/MessageManagementApi.md#sendCommunityChannelMessage) | **POST** /v4/community-channel/message/send | Send a community channel message
 *MessageManagementApi* | [**sendDirectChannelMessage**](docs/Api/MessageManagementApi.md#sendDirectChannelMessage) | **POST** /v4/direct-channel/message/send | Send a direct message
 *MessageManagementApi* | [**sendDirectChannelStreamMessage**](docs/Api/MessageManagementApi.md#sendDirectChannelStreamMessage) | **POST** /v4/direct-channel/message/stream/send | Send a direct channel stream message
@@ -395,9 +398,13 @@ Class | Method | HTTP request | Description
 - [CommunityUserSubchannelListRequest](docs/Model/CommunityUserSubchannelListRequest.md)
 - [CommunityUserSubchannelListResponse](docs/Model/CommunityUserSubchannelListResponse.md)
 - [CommunityUserSubchannelListResponseResult](docs/Model/CommunityUserSubchannelListResponseResult.md)
+- [DirectChannelHistoryMessageListRequest](docs/Model/DirectChannelHistoryMessageListRequest.md)
 - [DirectChannelMessageSendRequest](docs/Model/DirectChannelMessageSendRequest.md)
 - [DirectChannelMessageUpdateRequest](docs/Model/DirectChannelMessageUpdateRequest.md)
 - [DirectChannelStreamMessageSendRequest](docs/Model/DirectChannelStreamMessageSendRequest.md)
+- [DirectGroupHistoryMessageRecord](docs/Model/DirectGroupHistoryMessageRecord.md)
+- [DirectGroupHistoryMessageResponse](docs/Model/DirectGroupHistoryMessageResponse.md)
+- [DirectGroupHistoryMessageResult](docs/Model/DirectGroupHistoryMessageResult.md)
 - [FriendAddRequest](docs/Model/FriendAddRequest.md)
 - [FriendCleanRequest](docs/Model/FriendCleanRequest.md)
 - [FriendDeleteRequest](docs/Model/FriendDeleteRequest.md)
@@ -432,6 +439,7 @@ Class | Method | HTTP request | Description
 - [GroupChannelFreezeListGetResponseResult](docs/Model/GroupChannelFreezeListGetResponseResult.md)
 - [GroupChannelFreezeListUpdateRequest](docs/Model/GroupChannelFreezeListUpdateRequest.md)
 - [GroupChannelFreezeStatusItem](docs/Model/GroupChannelFreezeStatusItem.md)
+- [GroupChannelHistoryMessageListRequest](docs/Model/GroupChannelHistoryMessageListRequest.md)
 - [GroupChannelJoinRequest](docs/Model/GroupChannelJoinRequest.md)
 - [GroupChannelJoinResponse](docs/Model/GroupChannelJoinResponse.md)
 - [GroupChannelJoinedItem](docs/Model/GroupChannelJoinedItem.md)
@@ -499,6 +507,10 @@ Class | Method | HTTP request | Description
 - [OpenChannelGetResponseResult](docs/Model/OpenChannelGetResponseResult.md)
 - [OpenChannelGlobalMuteListAddRequest](docs/Model/OpenChannelGlobalMuteListAddRequest.md)
 - [OpenChannelGlobalMuteListRemoveRequest](docs/Model/OpenChannelGlobalMuteListRemoveRequest.md)
+- [OpenChannelHistoryMessageListRequest](docs/Model/OpenChannelHistoryMessageListRequest.md)
+- [OpenChannelHistoryMessageRecord](docs/Model/OpenChannelHistoryMessageRecord.md)
+- [OpenChannelHistoryMessageResponse](docs/Model/OpenChannelHistoryMessageResponse.md)
+- [OpenChannelHistoryMessageResult](docs/Model/OpenChannelHistoryMessageResult.md)
 - [OpenChannelLowPriorityMessageTypeListRequest](docs/Model/OpenChannelLowPriorityMessageTypeListRequest.md)
 - [OpenChannelMessageSendRequest](docs/Model/OpenChannelMessageSendRequest.md)
 - [OpenChannelMessageTypeListResponse](docs/Model/OpenChannelMessageTypeListResponse.md)
@@ -617,7 +629,7 @@ Authentication schemes defined for the API:
 ## Package Info
 
 - Repository: `https://github.com/NexconnAI-Dev/nexconn-server-sdk-php`
-- Package version: `0.1.1`
+- Package version: `0.1.2`
 
 ## License
 

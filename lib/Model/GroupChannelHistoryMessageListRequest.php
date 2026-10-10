@@ -1,6 +1,6 @@
 <?php
 /**
- * CommunityChannelHistoryMessageListRequest
+ * GroupChannelHistoryMessageListRequest
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \NexConnServerSdkPhp\ObjectSerializer;
 
 /**
- * CommunityChannelHistoryMessageListRequest Class Doc Comment
+ * GroupChannelHistoryMessageListRequest Class Doc Comment
  *
  * @category Class
  * @package  NexConnServerSdkPhp
@@ -40,7 +40,7 @@ use \NexConnServerSdkPhp\ObjectSerializer;
  * @link     https://github.com/NexconnAI-Dev/nexconn-server-sdk-php
  * @implements \ArrayAccess<string, mixed>
  */
-class CommunityChannelHistoryMessageListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GroupChannelHistoryMessageListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CommunityChannelHistoryMessageListRequest';
+    protected static $openAPIModelName = 'GroupChannelHistoryMessageListRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'channel_id' => 'string',
-        'subchannel_id' => 'string',
         'user_id' => 'string',
+        'channel_id' => 'string',
         'start_at' => 'int',
         'end_at' => 'int',
         'page_size' => 'int',
@@ -74,9 +73,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'channel_id' => null,
-        'subchannel_id' => null,
         'user_id' => null,
+        'channel_id' => null,
         'start_at' => 'int64',
         'end_at' => 'int64',
         'page_size' => 'int32',
@@ -89,9 +87,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'channel_id' => false,
-        'subchannel_id' => false,
         'user_id' => false,
+        'channel_id' => false,
         'start_at' => false,
         'end_at' => false,
         'page_size' => false,
@@ -184,9 +181,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'channel_id' => 'channelId',
-        'subchannel_id' => 'subchannelId',
         'user_id' => 'userId',
+        'channel_id' => 'channelId',
         'start_at' => 'startAt',
         'end_at' => 'endAt',
         'page_size' => 'pageSize',
@@ -199,9 +195,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'channel_id' => 'setChannelId',
-        'subchannel_id' => 'setSubchannelId',
         'user_id' => 'setUserId',
+        'channel_id' => 'setChannelId',
         'start_at' => 'setStartAt',
         'end_at' => 'setEndAt',
         'page_size' => 'setPageSize',
@@ -214,9 +209,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'channel_id' => 'getChannelId',
-        'subchannel_id' => 'getSubchannelId',
         'user_id' => 'getUserId',
+        'channel_id' => 'getChannelId',
         'start_at' => 'getStartAt',
         'end_at' => 'getEndAt',
         'page_size' => 'getPageSize',
@@ -280,9 +274,8 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('channel_id', $data ?? [], null);
-        $this->setIfExists('subchannel_id', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('channel_id', $data ?? [], null);
         $this->setIfExists('start_at', $data ?? [], null);
         $this->setIfExists('end_at', $data ?? [], null);
         $this->setIfExists('page_size', $data ?? [], 10);
@@ -316,11 +309,11 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['channel_id'] === null) {
-            $invalidProperties[] = "'channel_id' can't be null";
-        }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['channel_id'] === null) {
+            $invalidProperties[] = "'channel_id' can't be null";
         }
         if ($this->container['start_at'] === null) {
             $invalidProperties[] = "'start_at' can't be null";
@@ -355,60 +348,6 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
 
 
     /**
-     * Gets channel_id
-     *
-     * @return string
-     */
-    public function getChannelId()
-    {
-        return $this->container['channel_id'];
-    }
-
-    /**
-     * Sets channel_id
-     *
-     * @param string $channel_id Community channel ID.
-     *
-     * @return self
-     */
-    public function setChannelId($channel_id)
-    {
-        if (is_null($channel_id)) {
-            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
-        }
-        $this->container['channel_id'] = $channel_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets subchannel_id
-     *
-     * @return string|null
-     */
-    public function getSubchannelId()
-    {
-        return $this->container['subchannel_id'];
-    }
-
-    /**
-     * Sets subchannel_id
-     *
-     * @param string|null $subchannel_id Optional community subchannel ID. When omitted, messages from the whole community channel are queried.
-     *
-     * @return self
-     */
-    public function setSubchannelId($subchannel_id)
-    {
-        if (is_null($subchannel_id)) {
-            throw new \InvalidArgumentException('non-nullable subchannel_id cannot be null');
-        }
-        $this->container['subchannel_id'] = $subchannel_id;
-
-        return $this;
-    }
-
-    /**
      * Gets user_id
      *
      * @return string
@@ -421,7 +360,7 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
     /**
      * Sets user_id
      *
-     * @param string $user_id User ID of the community-channel participant.
+     * @param string $user_id User ID of the group-channel participant.
      *
      * @return self
      */
@@ -431,6 +370,33 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets channel_id
+     *
+     * @return string
+     */
+    public function getChannelId()
+    {
+        return $this->container['channel_id'];
+    }
+
+    /**
+     * Sets channel_id
+     *
+     * @param string $channel_id Group channel ID.
+     *
+     * @return self
+     */
+    public function setChannelId($channel_id)
+    {
+        if (is_null($channel_id)) {
+            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
+        }
+        $this->container['channel_id'] = $channel_id;
 
         return $this;
     }
@@ -513,10 +479,10 @@ class CommunityChannelHistoryMessageListRequest implements ModelInterface, Array
         }
 
         if (($page_size > 100)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for $page_size when calling GroupChannelHistoryMessageListRequest., must be smaller than or equal to 100.');
         }
         if (($page_size < 1)) {
-            throw new \InvalidArgumentException('invalid value for $page_size when calling CommunityChannelHistoryMessageListRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for $page_size when calling GroupChannelHistoryMessageListRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['page_size'] = $page_size;
